@@ -1,0 +1,223 @@
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+
+    .predictions-container {
+        flex-direction: column;
+    }
+
+    .prediction-box {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header Style */
+.header {
+    background-color: #3732FF;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.dashboard-title {
+    margin: 0;
+    font-size: 36px;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    height: 100vh;
+    background-color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    /* background-color: #EBF2FF; */
+    background-color: #bcd3ff;
+    padding: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    border: solid 0.1px #ebecf0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.input-box, .dropdown-filter {
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 0.95em;
+}
+
+.predict-button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    background-color: #3732FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.predict-button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+/* Slider Styling */
+.slider {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.slider .rc-slider {
+    margin: 0 10px;
+    height: 6px;
+}
+
+.slider .rc-slider-rail {
+    height: 6px;
+    background-color: #e6e6e6;
+}
+
+.slider .rc-slider-track {
+    background-color: #3732FF; /* Couleur de la piste active */
+    height: 6px;
+}
+
+.slider .rc-slider-handle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #3732FF; /* Couleur de la poignée */
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-top: -5px; /* Aligne la poignée avec la piste */
+}
+
+.slider .rc-slider-handle:focus, .slider .rc-slider-handle:hover {
+    border-color: #ff5733; /* Couleur de la poignée au survol et au focus */
+    box-shadow: 0 0 8px rgba(255, 87, 51, 0.5); /* Effet d'ombre */
+}
+
+.slider .rc-slider-handle-click-focused {
+    border-color: #ff5733; /* Couleur de la poignée au clic */
+    box-shadow: 0 0 8px rgba(255, 87, 51, 0.5); /* Effet d'ombre */
+}
+
+#impression-gs-slider {
+    padding: 0;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Sections in Main Content */
+.main-section {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Predictions */
+.predictions-container {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.prediction-box {
+    /* background-color: #EBF2FF; */
+    background-color: #bcd3ff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.prediction-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3732FF;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.prediction-value:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+
+/* Campaign History */
+.campaign-history {
+    margin-top: 1rem;
+}
+
+.campaign-item {
+    margin-bottom: 10px;
+}
+
+.campaign-item span {
+    color: #3732FF;
+}
+
+/* Performance Graph */
+#performance-graph {
+    width: 100%;
+    height: 400px;
+    margin-top: -15px;
+}
