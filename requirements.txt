@@ -1,3 +1,4 @@
+gunicorn
 pandas==2.0.3
 pandas-gbq==0.23.1
 plotly==5.14.1
