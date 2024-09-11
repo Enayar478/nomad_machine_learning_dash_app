@@ -14,6 +14,8 @@ from setup import get_category_for_sku
 # Initialisation de l'application Dash
 app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+server = app.server
+
 with open('data/df_load_data.pickle','rb') as modelFile:
      df = pickle.load(modelFile)
 
@@ -370,4 +372,4 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False, port=8080, host='0.0.0.0')
+    app.run_server(debug=False)
