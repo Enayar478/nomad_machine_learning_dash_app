@@ -1,61 +1,74 @@
-# Nomad Agency - Machine Learning et Dash App
+# Nomad Agency - Machine Learning and Dash App
 
-Nous sommes l'agence Nomad, une équipe de cinq Data Analysts, et nous vous présentons un projet d'application web que nous avons développé pour déployer un modèle de Machine Learning interactif via Dash. Ce projet met en œuvre plusieurs outils et bibliothèques dans un environnement Python, tout en mettant l'accent sur l'interface utilisateur et l'interactivité des prédictions.
+![Nomad Agency Banner](https://github.com/username/repository_name/blob/main/assets/banner_nomad_agency.png)
 
-## Description du projet
+We are Nomad Agency, a team of five Data Analysts, and we present a web application project that we developed to deploy an interactive Machine Learning model through Dash. This project integrates several tools and libraries within a Python environment, with a focus on the user interface and predictive interactivity.
 
-L'objectif de cette application est de fournir une interface utilisateur simple permettant d'interagir avec un modèle de prédiction en temps réel, en se basant sur un ensemble de données. Ce projet utilise des bibliothèques de visualisation telles que Plotly, et Dash pour structurer l'interface et gérer les callbacks interactifs.
+## Project Description
 
-## Technologies utilisées
+The goal of this application is to provide a simple user interface to interact with a real-time prediction model based on a dataset. This project leverages visualization libraries like Plotly and uses Dash to structure the interface and manage interactive callbacks.
 
-- **Dash** : pour construire l'application web interactive.
-- **Plotly** : pour générer des visualisations de données dynamiques.
-- **Pandas** et **Numpy** : pour la manipulation des données.
-- **Scikit-learn** : pour la modélisation prédictive (classification, régression, etc.).
-- **Pickle** : pour sérialiser et désérialiser les modèles de Machine Learning.
-- **Cachetools** : pour gérer les caches, optimisant ainsi les performances des appels fréquents au modèle.
-- **Gunicorn** : pour le déploiement de l'application sur Render.com.
+## Technologies Used
 
-## Fonctionnalités principales
+- **Dash**: to build the interactive web application.
+- **Plotly**: to create dynamic data visualizations.
+- **Pandas** and **Numpy**: for data manipulation.
+- **Scikit-learn**: for predictive modeling (classification, regression, etc.).
+- **Pickle**: to serialize and deserialize Machine Learning models.
+- **Cachetools**: to manage caches, optimizing the performance of frequent model calls.
+- **Gunicorn**: for deploying the application on Render.com.
 
-- **Visualisation des données** : l'utilisateur peut explorer les données utilisées pour entraîner le modèle via des graphiques interactifs.
-- **Prédictions dynamiques** : un formulaire permet d'entrer des données spécifiques et de recevoir instantanément une prédiction du modèle.
-- **Optimisation des performances** : grâce à la gestion du cache, les temps de réponse pour les requêtes fréquentes sont réduits.
-- **Déploiement sur Render.com** : l'application est accessible publiquement, facilitant la démonstration et l'interaction.
+## Key Features
 
-### Lien vers le projet
+- **Data Visualization**: Users can explore the data used to train the model through interactive charts.
+- **Dynamic Predictions**: A form allows users to input specific data and instantly receive a model prediction.
+- **Performance Optimization**: Through cache management, response times for frequent queries are reduced.
+- **Deployment on Render.com**: The application is publicly accessible, facilitating demonstration and interaction.
 
-Vous pouvez explorer le projet en direct en suivant ce lien : [Nomad Machine Learning Dash App](https://nomad-machine-learning-dash-app.onrender.com/).
+## User Interface
 
-## Points à améliorer
+### Before (Without Input Data)
+Here is a screenshot of our application's interface before entering any data:
 
-- **Sécurité** : Implémentation future de la gestion des autorisations et de l'authentification pour restreindre l'accès à certaines parties de l'application.
-- **Scalabilité** : Test d'autres services de déploiement et configuration du projet pour supporter un plus grand nombre d'utilisateurs simultanés.
+![User Interface - Before](https://user-images.githubusercontent.com/your-username/nomad-app-interface-before.png)
 
----
+### After (With Results)
+Here is a screenshot of our application's interface after submitting data and displaying the results:
 
-Ce projet vient en complément de l'analyse effectuée dans le cadre d'un autre projet :
+![User Interface - After](https://user-images.githubusercontent.com/your-username/nomad-app-interface-after.png)
 
-# Projet Client Nomad
 
-## Contexte du projet
+### Project Link
 
-Dans le cadre de notre Bootcamp Data Analyst, nous avons collaboré en tant qu'agence Nomad pour explorer et analyser un ensemble de données fourni par un client. Notre mission était de répondre à une problématique d'optimisation des opérations commerciales.
+You can explore the live project via this link: [Nomad Machine Learning Dash App](https://nomad-machine-learning-dash-app.onrender.com/).
 
-## Problématique
+## Areas for Improvement
 
-*Comprendre les critères déterminants dans le succès d'une opération commerciale, en termes de nombre de clients et de recrutements de nouveaux clients.*
-
----
-
-## Méthodologie
-
-Pour cela, nous avons travaillé avec plusieurs fichiers contenant des informations cruciales sur les produits, les ventes, les investissements publicitaires et les interactions utilisateurs. En analysant ces données, nous avons pu identifier les facteurs influençant la performance des opérations et proposer des recommandations basées sur nos analyses.
+- **Security**: Future implementation of authorization and authentication management to restrict access to certain parts of the application.
+- **Scalability**: Testing other deployment services and configuring the project to support a higher number of concurrent users.
 
 ---
 
-## Mise en place & Suivi du projet
+This project complements the analysis conducted as part of another project:
 
-[Suivi Projet](https://www.notion.so/9302c505c7b04fb7b5e3ce8a8a5a4e17?pvs=21)
+# Client Nomad Project
+
+## Project Context
+
+As part of our Data Analyst Bootcamp, we collaborated as Nomad Agency to explore and analyze a dataset provided by a client. Our mission was to address a commercial operations optimization problem.
+
+## Problem Statement
+
+*To understand the key factors behind the success of a commercial operation, in terms of customer acquisition and new customer recruitment.*
 
 ---
+
+## Methodology
+
+To achieve this, we worked with multiple files containing crucial information on products, sales, advertising investments, and user interactions. By analyzing this data, we identified the factors influencing operational performance and proposed recommendations based on our findings.
+
+---
+
+## Project Setup & Tracking
+
+[Project Tracking](https://www.notion.so/9302c505c7b04fb7b5e3ce8a8a5a4e17?pvs=21)
