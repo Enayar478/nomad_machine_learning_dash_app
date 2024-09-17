@@ -35,8 +35,7 @@ Here is a screenshot of our application's interface before entering any data:
 ### After (With Results)
 Here is a screenshot of our application's interface after submitting data and displaying the results:
 
-![User Interface - After](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/homepage_results_dash_app.jpg])
-
+![User Interface - After](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/homepage_results_dash_app.jpg)
 
 ### Project Link
 
