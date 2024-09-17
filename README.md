@@ -1,6 +1,6 @@
 # Nomad Agency - Machine Learning and Dash App
 
-![Nomad Agency Banner](https://github.com/username/repository_name/blob/main/assets/banner_nomad_agency.png)
+![Nomad Agency Banner](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/banner_nomad_agency.jpg)
 
 We are Nomad Agency, a team of five Data Analysts, and we present a web application project that we developed to deploy an interactive Machine Learning model through Dash. This project integrates several tools and libraries within a Python environment, with a focus on the user interface and predictive interactivity.
 
