@@ -30,12 +30,12 @@ The goal of this application is to provide a simple user interface to interact w
 ### Before (Without Input Data)
 Here is a screenshot of our application's interface before entering any data:
 
-![User Interface - Before](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/homepage_dash_app.png)
+![User Interface - Before](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/homepage_dash_app.jpg)
 
 ### After (With Results)
 Here is a screenshot of our application's interface after submitting data and displaying the results:
 
-![User Interface - After]([https://user-images.githubusercontent.com/your-username/nomad-app-interface-after.png])
+![User Interface - After](https://github.com/Enayar478/nomad_machine_learning_dash_app/blob/main/assets/img/homepage_results_dash_app.jpg])
 
 
 ### Project Link
