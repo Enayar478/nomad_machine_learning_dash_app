@@ -37,145 +37,146 @@ models = load_models()
 product_id_list = df['product_id'].unique()
 product_id_options = [{'label': str(id), 'value': str(id)} for id in product_id_list]
 
-app.layout = html.Div([
-    # Header
-    html.Div([
-        html.H1("Dashboard de Prédiction E-commerce", className="dashboard-title"),
-    ], className="header"),
+app.layout = dbc.Container([
+    dbc.Row([
+        dbc.Col(html.H1("Dashboard de Prédiction E-commerce", className="dashboard-title text-center mb-3"), width=12)
+    ], className="header mb-3"),
     
-    # Conteneur principal
-    html.Div([
+    dbc.Row([
         # Sidebar
-        html.Div([
-            html.H2("Filtres", className="sidebar-title"),
-
-            # Dropdown pour sélectionner l'ID du produit
-            html.Label("ID du Produit"),
-            dcc.Dropdown(
-                id="product-id-input",
-                options=product_id_options,
-                placeholder="Entrez l'ID du produit",
-                searchable=True,
-                clearable=True,
-                className="input-box"
-            ),
-
-            # Dropdown pour sélectionner un modèle
-            html.Br(),
-            html.Label("Modèle de prédiction"),
-            dcc.Dropdown(
-                id="model-dropdown", 
-                options=[
-                    {'label': 'Random Forest', 'value': 'rf'},
-                    {'label': 'Linear Regression', 'value': 'lr'},
-                    {'label': 'Gradient Boosting', 'value': 'gbc'}
-                ],
-                placeholder="Sélectionnez un modèle",
-                className="input-box"
-            ),
-    
-            # Champ affichant automatiquement la catégorie après sélection du produit
-            html.Br(),
-            html.Label("Catégorie"),
-            dcc.Input(
-                id="category-input",
-                type="text",
-                placeholder="Catégorie",
-                readOnly=True,
-                className="input-box"
-            ),
-
-            # Champ pour afficher le prix moyen (avg_price) que l'utilisateur peut remplir
-            html.Br(),
-            html.Label("Prix Moyen"),
-            dcc.Input(
-                id="avg-price-input",
-                type="number",
-                placeholder="Entrez le prix moyen",
-                className="input-box"
-            ),
-
-            # Champ pour afficher l'indice du prix moyen (indice_avg_price) que l'utilisateur peut remplir
-            html.Br(),
-            html.Label("Indice Prix Moyen"),
-            dcc.Input(
-                id="indice-avg-price-input",
-                type="number",
-                placeholder="Entrez l'indice prix moyen",
-                className="input-box"
-            ),
-
-            # Slider pour sélectionner les impressions (impression_gs)
-            html.Br(),
-            html.Label("Impressions"),
-            dcc.Slider(
-                id='impression-gs-slider',
-                min=0,
-                max=df['impression_gs'].max(),
-                step=10000,
-                tooltip={"placement": "bottom", "always_visible": True},
-                marks=None,
-                value=10000,
-                className="slider"
-            ),
-            html.Div(id="impression-gs-output", className="output-box"),
-
-            # Sélecteur pour afficher si le produit est en page d'accueil (on_front)
-            html.Br(),
-            html.Label("En Page d'Accueil"),
-            dcc.Dropdown(
-                id="on-front-dropdown",
-                options=[
-                    {'label': 'Oui', 'value': 1},
-                    {'label': 'Non', 'value': 0}
-                ],
-                placeholder="Sélectionnez Oui ou Non",
-                className="input-box"
-            ),
-
-            # Sélection de la date de lancement de l'opération (calendrier)
-            html.Br(),
-            html.Label("Date de Lancement de l'Opération"),
-            dcc.DatePickerSingle(
-                id='launch-date-picker',
-                placeholder='Sélectionnez une date',
-                display_format='YYYY-MM-DD',
-                className="input-box"
-            ),
-    
-            # Bouton pour prédire
-            html.Br(),
-            html.Button("Prédire", id="predict-button", n_clicks=0, className="predict-button"),
-        ], className="sidebar"),
+        dbc.Col([
+            html.H2("Filtres", className="sidebar-title mb-3"),
+            dbc.Form([
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("ID du Produit", className="mb-0"),
+                        dcc.Dropdown(
+                            id="product-id-input",
+                            options=product_id_options,
+                            placeholder="Entrez l'ID du produit",
+                            searchable=True,
+                            clearable=True,
+                            className="mb-2"
+                        )
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Modèle de prédiction", className="mb-0"),
+                        dcc.Dropdown(
+                            id="model-dropdown", 
+                            options=[
+                                {'label': 'Random Forest', 'value': 'rf'},
+                                {'label': 'Linear Regression', 'value': 'lr'},
+                                {'label': 'Gradient Boosting', 'value': 'gbc'}
+                            ],
+                            placeholder="Sélectionnez un modèle",
+                            className="mb-2"
+                        )
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Catégorie", className="mb-0"),
+                        dbc.Input(id="category-input", type="text", placeholder="Catégorie", readOnly=True, className="mb-2")
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Prix Moyen", className="mb-0"),
+                        dbc.Input(id="avg-price-input", type="number", placeholder="Entrez le prix moyen", className="mb-2")
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Indice Prix Moyen", className="mb-0"),
+                        dbc.Input(id="indice-avg-price-input", type="number", placeholder="Entrez l'indice prix moyen", className="mb-2")
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Impressions", className="mb-0"),
+                        dcc.Slider(
+                            id='impression-gs-slider',
+                            min=0,
+                            max=df['impression_gs'].max(),
+                            step=10000,
+                            marks=None,
+                            tooltip={"placement": "bottom", "always_visible": True},
+                            className="mb-2"
+                        )
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("En Page d'Accueil", className="mb-0"),
+                        dcc.Dropdown(
+                            id="on-front-dropdown",
+                            options=[
+                                {'label': 'Oui', 'value': 1},
+                                {'label': 'Non', 'value': 0}
+                            ],
+                            placeholder="Sélectionnez Oui ou Non",
+                            className="mb-2"
+                        )
+                    ], width=12),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Label("Date de Lancement", className="mb-0"),
+                        dcc.DatePickerSingle(
+                            id='launch-date-picker',
+                            placeholder='Sélectionnez une date',
+                            display_format='YYYY-MM-DD',
+                            className="mb-2 w-100"
+                        )
+                    ], width=12),
+                ]),
+                dbc.Button("Prédire", id="predict-button", color="primary", className="w-100 mt-2")
+            ])
+        ], md=3, lg=2, className="sidebar"),
         
-        # Contenu principal
-        html.Div([
-            html.Div([
-                html.H2("Prévisions de Performance", className="section-title"),
-                html.Div([
-                    html.Div([
-                        html.H3("En Opération Commerciale"),
-                        html.Div(id="prediction-op", children="En attente...", className="prediction-value"),
-                    ], className="prediction-box"),
-                    html.Div([
-                        html.H3("Hors Opération Commerciale"),
-                        html.Div(id="prediction-no-op", children="En attente...", className="prediction-value"),
-                    ], className="prediction-box"),
-                ], className="predictions-container"),
-            ], className="main-section"),
+        # Main content
+        dbc.Col([
+            dbc.Row([
+                dbc.Col([
+                    html.H2("Prévisions de Performance", className="section-title h5 mb-2"),
+                    dbc.Row([
+                        dbc.Col([
+                            html.H3("En Opération Commerciale", className="h6 mb-0"),
+                            html.Div(id="prediction-op", children="En attente...", className="prediction-value")
+                        ], width=6),
+                        dbc.Col([
+                            html.H3("Hors Opération Commerciale", className="h6 mb-0"),
+                            html.Div(id="prediction-no-op", children="En attente...", className="prediction-value")
+                        ], width=6),
+                    ], className="mb-3"),
+                ], width=12),
+            ]),
             
-            html.Div([
-                html.H2("Historique des Campagnes", className="section-title"),
-                html.Div(id="campaign-history", className="campaign-history"),
-            ], className="main-section"),
+            dbc.Row([
+                dbc.Col([
+                    html.H2("Historique des Performances", className="section-title h5 mb-2"),
+                    dcc.Graph(
+                        id="performance-graph",
+                        config={
+                            'responsive': True,
+                            'displayModeBar': False,  # Optionnel : cache la barre d'outils Plotly
+                        },
+                        style={"height": "100%", "width": "100%"}
+                    )
+                ], width=12, className="mb-3", style={"height": "400px"}),
+            ]),
             
-            html.Div([
-                html.H2("Historique des Performances", className="section-title"),
-                dcc.Graph(id="performance-graph"),
-            ], className="main-section"),
-        ], className="dashboard-content"),
-    ], className="main-container"),
-])
+            dbc.Row([
+                dbc.Col([
+                    html.H2("Historique des Campagnes", className="section-title h5 mb-2"),
+                    html.Div(id="campaign-history", className="campaign-history", style={"maxHeight": "150px", "overflowY": "auto"})
+                ], width=12),
+            ]),
+        ], md=9, lg=10, className="dashboard-content")
+    ])
+], fluid=True, className="vh-100 d-flex flex-column")
 
 @app.callback(
     [Output("category-input", "value"),
@@ -194,7 +195,6 @@ def update_sidebar(product_id):
         return category, avg_price, indice_avg_price, on_front
     return "Catégorie non disponible", "Prix non disponible", "Indice non disponible", None
 
-
 @app.callback(
     [Output("prediction-op", "children"),
      Output("prediction-no-op", "children")],
@@ -207,30 +207,23 @@ def update_sidebar(product_id):
      State("on-front-dropdown", "value"),
      State("launch-date-picker", "date")]
 )
-
 def update_predictions(n_clicks, model_op, product_id, avg_price, indice_avg_price, impression_gs, on_front, launch_date):
     if n_clicks > 0:
-        # Vérifier que les valeurs sont non-nulles
         if not model_op or not product_id:
             return "Erreur: Modèle ou produit non sélectionné", "Erreur: Modèle ou produit non sélectionné"
         
         try:
-            # Vérifiez que launch_date n'est pas None
             if launch_date is None:
                 raise ValueError("La date de lancement est requise.")
         
-            # Préfixer les valeurs du modèle pour correspondre aux clés du dictionnaire
             model_op_key = f"{model_op}_op"
             model_no_op_key = f"{model_op}_hors_op"
 
-            # Vérifiez que les clés existent dans le dictionnaire models
             if model_op_key not in models or model_no_op_key not in models:
                 return "Erreur: Modèle sélectionné inconnu", "Erreur: Modèle sélectionné inconnu"
             
-            # Récupération de la catégorie pour le product_id sélectionné
             category_for_sku = get_category_for_sku(df, product_id)
 
-            # Transformation des données d'entrée en DataFrame
             input_data = setup.load_data_model(
                 df,
                 product_id,
@@ -241,7 +234,6 @@ def update_predictions(n_clicks, model_op, product_id, avg_price, indice_avg_pri
                 launch_date
             )
 
-            # Prédictions
             prediction_op = models[model_op_key].predict(input_data)[0]
             prediction_no_op = models[model_no_op_key].predict(input_data)[0]
 
@@ -250,9 +242,7 @@ def update_predictions(n_clicks, model_op, product_id, avg_price, indice_avg_pri
         except Exception as e:
             return f"Erreur: {str(e)}", f"Erreur: {str(e)}"
 
-    # Message par défaut lorsque le bouton n'a pas encore été cliqué
     return "En attente...", "En attente..."
-
 
 @app.callback(
     [Output("campaign-history", "children"),
@@ -268,7 +258,6 @@ def update_predictions(n_clicks, model_op, product_id, avg_price, indice_avg_pri
 def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, impression_gs, on_front, launch_date):
     if product_id:
         try:
-            # Historique des campagnes
             campaigns = df[(df['product_id'] == product_id) & (df['on_operation'] == 1)][['operation_name', 'startdate_op', 'enddate_op']].drop_duplicates()
             if campaigns.empty:
                 campaign_history = ["Aucun historique disponible"]
@@ -281,7 +270,6 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                     for _, row in campaigns.iterrows()
                 ]
 
-            # Graphique de performance
             performance_data = df[df['product_id'] == product_id]
             fig = go.Figure()
 
@@ -300,16 +288,12 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                     marker_color='green'
                 ))
 
-                # Ajouter les prédictions si les valeurs sont disponibles
                 if model_op and launch_date:
                     try:
-                        # Préfixer les valeurs du modèle pour correspondre aux clés du dictionnaire
                         model_op_key = f"{model_op}_op"
                         model_no_op_key = f"{model_op}_hors_op"
 
-                        # Vérifiez que les clés existent dans le dictionnaire models
                         if model_op_key in models and model_no_op_key in models:
-                            # Transformation des données d'entrée en DataFrame
                             input_data = setup.load_data_model(
                                 df,
                                 product_id,
@@ -320,11 +304,9 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                                 launch_date
                             )
 
-                            # Prédictions
                             prediction_op = models[model_op_key].predict(input_data)[0]
                             prediction_no_op = models[model_no_op_key].predict(input_data)[0]
 
-                            # Ajouter les prédictions au graphique
                             fig.add_trace(go.Scatter(
                                 x=[pd.to_datetime(launch_date)],
                                 y=[prediction_op],
@@ -348,7 +330,6 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                     except Exception as e:
                         print(f"Erreur lors de la prédiction: {str(e)}")
 
-                # Mise en page du graphique
                 fig.update_layout(
                     barmode='group',
                     title='Performance du produit au fil du temps',
@@ -357,19 +338,37 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                     xaxis_tickformat='%d<br>%B',
                     legend_title_text='Type de clients',
                     margin=dict(l=40, r=20, t=40, b=20),
-                    height=200
+                    autosize=True,  # Rend le graphique responsive
+                    height=400,  # Hauteur de base, s'ajustera en fonction de l'écran
+                    hovermode='closest'
+                )
+
+                # Configuration pour rendre le graphique responsive
+                fig.update_layout(
+                    legend=dict(
+                        orientation="h",
+                        yanchor="bottom",
+                        y=1.02,
+                        xanchor="right",
+                        x=1
+                    )
                 )
             else:
                 fig = go.Figure()
+
+            # Configuration pour rendre le graphique responsive
+            fig.update_layout(
+                autosize=True,
+                margin=dict(l=20, r=20, t=40, b=20),
+                paper_bgcolor="LightSteelBlue",
+            )
 
             return campaign_history, fig
         
         except Exception as e:
             return ["Erreur dans l'historique des campagnes"], go.Figure()
 
-    # Message par défaut lorsque le produit n'est pas sélectionné
     return ["En attente..."], go.Figure()
-
 
 if __name__ == '__main__':
     app.run_server(debug=False)
