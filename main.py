@@ -39,100 +39,108 @@ product_id_options = [{'label': str(id), 'value': str(id)} for id in product_id_
 
 app.layout = dbc.Container([
     dbc.Row([
-        dbc.Col(html.H1("Dashboard de Prédiction E-commerce", className="dashboard-title text-center mb-3"), width=12)
-    ], className="header mb-3"),
+        dbc.Col(html.H1("Dashboard de Prédiction E-commerce"))
+    ]),
     
     dbc.Row([
         # Sidebar
         dbc.Col([
-            html.H2("Filtres", className="sidebar-title mb-3"),
+            html.H2("Filtres"),
             dbc.Form([
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("ID du Produit", className="mb-0"),
+                        dbc.Label("ID du Produit"),
                         dcc.Dropdown(
-                            id="product-id-input",
                             options=product_id_options,
                             placeholder="Entrez l'ID du produit",
                             searchable=True,
                             clearable=True,
-                            className="mb-2"
                         )
-                    ], width=12),
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Modèle de prédiction", className="mb-0"),
+                        dbc.Label("Modèle de prédiction"),
                         dcc.Dropdown(
-                            id="model-dropdown", 
                             options=[
                                 {'label': 'Random Forest', 'value': 'rf'},
                                 {'label': 'Linear Regression', 'value': 'lr'},
                                 {'label': 'Gradient Boosting', 'value': 'gbc'}
                             ],
                             placeholder="Sélectionnez un modèle",
-                            className="mb-2"
                         )
-                    ], width=12),
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Catégorie", className="mb-0"),
-                        dbc.Input(id="category-input", type="text", placeholder="Catégorie", readOnly=True, className="mb-2")
-                    ], width=12),
+                        dbc.Label("Catégorie"),
+                        dbc.Input(
+                            id="category-input",
+                            type="text",
+                            placeholder="Catégorie",
+                            readOnly=True
+                            )
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Prix Moyen", className="mb-0"),
-                        dbc.Input(id="avg-price-input", type="number", placeholder="Entrez le prix moyen", className="mb-2")
-                    ], width=12),
+                        dbc.Label("Prix Moyen"),
+                        dbc.Input(
+                            id="avg-price-input",
+                            type="number",
+                            placeholder="Entrez le prix moyen",
+                            )
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Indice Prix Moyen", className="mb-0"),
-                        dbc.Input(id="indice-avg-price-input", type="number", placeholder="Entrez l'indice prix moyen", className="mb-2")
-                    ], width=12),
+                        dbc.Label("Indice Prix Moyen"),
+                        dbc.Input(
+                            id="indice-avg-price-input",
+                            type="number",
+                            placeholder="Entrez l'indice prix moyen",
+                            )
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Impressions", className="mb-0"),
+                        dbc.Label("Impressions"),
                         dcc.Slider(
                             id='impression-gs-slider',
                             min=0,
                             max=df['impression_gs'].max(),
                             step=10000,
                             marks=None,
-                            tooltip={"placement": "bottom", "always_visible": True},
-                            className="mb-2"
+                            tooltip={"placement": "bottom", "always_visible": True}
                         )
-                    ], width=12),
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("En Page d'Accueil", className="mb-0"),
+                        dbc.Label("En Page d'Accueil"),
                         dcc.Dropdown(
                             id="on-front-dropdown",
                             options=[
                                 {'label': 'Oui', 'value': 1},
                                 {'label': 'Non', 'value': 0}
                             ],
-                            placeholder="Sélectionnez Oui ou Non",
-                            className="mb-2"
+                            placeholder="Sélectionnez Oui ou Non"
                         )
-                    ], width=12),
+                    ]),
                 ]),
                 dbc.Row([
                     dbc.Col([
-                        dbc.Label("Date de Lancement", className="mb-0"),
+                        dbc.Label("Date de Lancement"),
                         dcc.DatePickerSingle(
                             id='launch-date-picker',
                             placeholder='Sélectionnez une date',
                             display_format='YYYY-MM-DD',
-                            className="mb-2 w-100"
+                            clearable=True,
+                            with_portal=True
                         )
-                    ], width=12),
+                    ]),
                 ]),
-                dbc.Button("Prédire", id="predict-button", color="primary", className="w-100 mt-2")
+                dbc.Button("Prédire", id="predict-button", color="primary")
             ])
         ], md=3, lg=2, className="sidebar"),
         
@@ -140,43 +148,43 @@ app.layout = dbc.Container([
         dbc.Col([
             dbc.Row([
                 dbc.Col([
-                    html.H2("Prévisions de Performance", className="section-title h5 mb-2"),
+                    html.H2("Prévisions de Performance"),
                     dbc.Row([
                         dbc.Col([
-                            html.H3("En Opération Commerciale", className="h6 mb-0"),
+                            html.H3("En Opération Commerciale"),
                             html.Div(id="prediction-op", children="En attente...", className="prediction-value")
-                        ], width=6),
+                        ]),
                         dbc.Col([
                             html.H3("Hors Opération Commerciale", className="h6 mb-0"),
                             html.Div(id="prediction-no-op", children="En attente...", className="prediction-value")
-                        ], width=6),
-                    ], className="mb-3"),
-                ], width=12),
+                        ]),
+                    ]),
+                ]),
             ]),
             
             dbc.Row([
                 dbc.Col([
-                    html.H2("Historique des Performances", className="section-title h5 mb-2"),
+                    html.H2("Historique des Performances"),
                     dcc.Graph(
                         id="performance-graph",
                         config={
                             'responsive': True,
-                            'displayModeBar': False,  # Optionnel : cache la barre d'outils Plotly
+                            'displayModeBar': False,
                         },
-                        style={"height": "100%", "width": "100%"}
+                        style={"height": "400", "width": "100%"}
                     )
-                ], width=12, className="mb-3", style={"height": "400px"}),
+                ]),
             ]),
             
             dbc.Row([
                 dbc.Col([
-                    html.H2("Historique des Campagnes", className="section-title h5 mb-2"),
+                    html.H2("Historique des Campagnes"),
                     html.Div(id="campaign-history", className="campaign-history", style={"maxHeight": "150px", "overflowY": "auto"})
-                ], width=12),
+                ]),
             ]),
         ], md=9, lg=10, className="dashboard-content")
     ])
-], fluid=True, className="vh-100 d-flex flex-column")
+], fluid=True)
 
 @app.callback(
     [Output("category-input", "value"),
@@ -337,7 +345,7 @@ def update_history_and_graph(product_id, model_op, avg_price, indice_avg_price, 
                     yaxis_title='Nombre de clients',
                     xaxis_tickformat='%d<br>%B',
                     legend_title_text='Type de clients',
-                    margin=dict(l=40, r=20, t=40, b=20),
+                    # margin=dict(l=40, r=20, t=40, b=20),
                     autosize=True,  # Rend le graphique responsive
                     height=400,  # Hauteur de base, s'ajustera en fonction de l'écran
                     hovermode='closest'
